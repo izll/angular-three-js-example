@@ -1,0 +1,54 @@
+<p-table styleClass="p-table-small-caption">
+
+  <ng-template pTemplate="caption">
+    <div class="flex align-items-center justify-content-between">
+      Modellek
+      <p-button icon="pi pi-refresh"></p-button>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="text-center">
+        <p-checkbox [disabled]="true"></p-checkbox>
+      </th>
+      <th>
+        Megnevezés
+      </th>
+      <th class="text-center">
+        #
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body">
+    <tr>
+      <td>
+
+      </td>
+      <td>
+
+      </td>
+      <td>
+
+      </td>
+    </tr>
+  </ng-template>
+
+</p-table>
+
+<hr class="mt-4 light-hr"/>
+
+<h2 class="mt-4">Szín:</h2>
+
+<div class="pl-5 pr-5 pt-3">
+  <p-colorPicker [(ngModel)]="modelColor" [inline]="true"></p-colorPicker>
+</div>
+
+<hr class="mt-4 light-hr"/>
+
+<h2 class="mt-4">Átlátszóság:</h2>
+
+<div class="pl-5 pr-5 pt-3">
+  <p-slider [(ngModel)]="modelTransparency"></p-slider>
+</div>
