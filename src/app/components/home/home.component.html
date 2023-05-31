@@ -12,15 +12,15 @@
       <div class="canvas-controls">
         <p-button styleClass="control-btn" *ngIf="uiHelperService.mobileView || uiHelperService.tabletView" (click)="settingSidebarVisible = !settingSidebarVisible"><i
           class="pi pi-list"></i></p-button>
-        <p-button styleClass="control-btn"><img alt="3D nézet" ngSrc="assets/icons/icons8-orthogonal-view.svg" height="48" width="48"></p-button>
-        <p-button styleClass="control-btn"><img alt="Előlnézet" ngSrc="assets/icons/icons8-front-view.svg" height="48" width="48"></p-button>
-        <p-button styleClass="control-btn"><img alt="Felülnézet" ngSrc="assets/icons/icons8-top-view.svg" height="48" width="48"></p-button>
-        <p-button styleClass="control-btn"><img alt="Odalnézet balról" ngSrc="assets/icons/icons8-left-view.svg" height="48" width="48"></p-button>
-        <p-button styleClass="control-btn"><img alt="Oldalnézet jobbról" ngSrc="assets/icons/icons8-right-view.svg" height="48" width="48"></p-button>
+        <p-button styleClass="control-btn"><img alt="3D nézet" (click)="setCameraView(CameraView.DEFAULT)" ngSrc="assets/icons/icons8-orthogonal-view.svg" height="48" width="48"></p-button>
+        <p-button styleClass="control-btn"><img alt="Előlnézet" (click)="setCameraView(CameraView.FRONT)" ngSrc="assets/icons/icons8-front-view.svg" height="48" width="48"></p-button>
+        <p-button styleClass="control-btn"><img alt="Felülnézet" (click)="setCameraView(CameraView.TOP)" ngSrc="assets/icons/icons8-top-view.svg" height="48" width="48"></p-button>
+        <p-button styleClass="control-btn"><img alt="Odalnézet balról" (click)="setCameraView(CameraView.LEFT)" ngSrc="assets/icons/icons8-left-view.svg" height="48" width="48"></p-button>
+        <p-button styleClass="control-btn"><img alt="Oldalnézet jobbról" (click)="setCameraView(CameraView.RIGHT)" ngSrc="assets/icons/icons8-right-view.svg" height="48" width="48"></p-button>
       </div>
     </div>
 
-    <canvas class="main-view" #canvas>
+    <canvas class="main-view" #canvas (click)="canvasClicked($event)">
 
     </canvas>
 
@@ -28,7 +28,7 @@
 
   <div class="content-right" *ngIf="!uiHelperService.mobileView && !uiHelperService.tabletView">
 
-    <app-model-setting></app-model-setting>
+    <app-model-setting (reloadClickedEvent)="loadSampleModels()" [modelList]="sampleModels" [scene]="scene" #modelSettingComponent></app-model-setting>
 
   </div>
 
@@ -36,7 +36,7 @@
 
 <p-sidebar #modelSettingBar *ngIf="uiHelperService.mobileView || uiHelperService.tabletView" [(visible)]="settingSidebarVisible" [position]="'right'" [showCloseIcon]="false">
 
-  <app-model-setting>
+  <app-model-setting (reloadClickedEvent)="loadSampleModels()" [modelList]="sampleModels" [scene]="scene" #modelSettingComponent>
     <p-button icon="pi pi-times" (click)="settingSidebarVisible = false"></p-button>
   </app-model-setting>
 

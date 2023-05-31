@@ -1,10 +1,10 @@
-<p-table styleClass="p-table-small-caption">
+<p-table styleClass="p-table-small-caption" [value]="modelList" [(selection)]="selectedModel" selectionMode="single" dataKey="index" (selectionChange)="showSelectionBoundingBox()">
 
   <ng-template pTemplate="caption">
     <div class="flex align-items-center justify-content-between">
       Modellek
       <div class="model-setting-buttons">
-        <p-button icon="pi pi-refresh"></p-button>
+        <p-button icon="pi pi-refresh" (click)="clearSelection(); reloadClickedEvent.emit()"></p-button>
         <ng-content></ng-content>
       </div>
     </div>
@@ -24,34 +24,36 @@
     </tr>
   </ng-template>
 
-  <ng-template pTemplate="body">
-    <tr>
-      <td>
-
+  <ng-template pTemplate="body" let-model>
+    <tr [pSelectableRow]="model">
+      <td class="text-center" (click)="uiHelperService.stopPropagation($event)">
+        <p-checkbox [binary]="true" [(ngModel)]="model.visible" (click)="setModelVisibility(model)"></p-checkbox>
       </td>
       <td>
-
+        {{model.name}}
       </td>
-      <td>
-
+      <td class="text-center">
+        <p-button icon="pi pi-cog" styleClass="p-button-rounded p-button-secondary" (click)="selectedModel = model"></p-button>
       </td>
     </tr>
   </ng-template>
 
 </p-table>
 
-<hr class="mt-4 light-hr"/>
+<div *ngIf="selectedModel">
+  <hr class="mt-4 light-hr"/>
 
-<h2 class="mt-4">Szín:</h2>
+  <h2 class="mt-4">Szín:</h2>
 
-<div class="pl-5 pr-5 pt-3">
-  <p-colorPicker [(ngModel)]="modelColor" [inline]="true"></p-colorPicker>
-</div>
+  <div class="pl-5 pr-5 pt-3">
+    <p-colorPicker [(ngModel)]="selectedModel.color" [inline]="true" (onChange)="setModelColor()"></p-colorPicker>
+  </div>
 
-<hr class="mt-4 light-hr"/>
+  <hr class="mt-4 light-hr"/>
 
-<h2 class="mt-4">Átlátszóság:</h2>
+  <h2 class="mt-4">Átlátszóság:</h2>
 
-<div class="pl-5 pr-5 pt-3">
-  <p-slider [(ngModel)]="modelTransparency"></p-slider>
+  <div class="pl-5 pr-5 pt-3">
+    <p-slider [(ngModel)]="selectedModel.transparency" (onChange)="setModelTransparency()"></p-slider>
+  </div>
 </div>

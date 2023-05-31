@@ -1,0 +1,11 @@
+Model Information:
+* title:	[SSBB] Donkey Kong
+* source:	https://sketchfab.com/3d-models/ssbb-donkey-kong-087f31ec47a1405cb2c2b8bedca889f5
+* author:	ThatOneGuyWhoDoesThings (https://sketchfab.com/thatoneguywhodoesthings)
+
+Model License:
+* license type:	CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
+* requirements:	Author must be credited. Modified versions must have the same license. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "[SSBB] Donkey Kong" (https://sketchfab.com/3d-models/ssbb-donkey-kong-087f31ec47a1405cb2c2b8bedca889f5) by ThatOneGuyWhoDoesThings (https://sketchfab.com/thatoneguywhodoesthings) licensed under CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)

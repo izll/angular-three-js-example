@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Cube",
+    "url": "assets/models/Cube/Cube.gltf"
+  },
+  {
+    "name": "Duck",
+    "url": "assets/models/Duck/Duck.gltf"
+  },
+  {
+    "name": "Donkey Kong",
+    "url": "assets/models/DonkeyKong/scene.gltf"
+  }
+]

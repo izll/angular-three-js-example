@@ -24,4 +24,9 @@ export class UiHelperService {
     this.mobileView = window.innerWidth < 768;
   }
 
+  public stopPropagation(e: any) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
 }

@@ -14,6 +14,7 @@ import {SliderModule} from "primeng/slider";
 import {ModelSettingComponent} from "./components/home/model-setting/model-setting.component";
 import {SidebarModule} from "primeng/sidebar";
 import {NgOptimizedImage} from "@angular/common";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {NgOptimizedImage} from "@angular/common";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     ButtonModule,
     TableModule,
