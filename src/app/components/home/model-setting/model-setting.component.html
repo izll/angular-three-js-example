@@ -3,7 +3,10 @@
   <ng-template pTemplate="caption">
     <div class="flex align-items-center justify-content-between">
       Modellek
-      <p-button icon="pi pi-refresh"></p-button>
+      <div class="model-setting-buttons">
+        <p-button icon="pi pi-refresh"></p-button>
+        <ng-content></ng-content>
+      </div>
     </div>
   </ng-template>
 

@@ -44,10 +44,24 @@ h1 {
   margin-right: 20px;
 }
 
-.canvas-controls {
-  margin-top: 10px;
+.top-bar {
   display: flex;
-  gap: 10px
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.top-bar-separator {
+  flex-grow: 1;
+}
+
+.title {
+  white-space: nowrap;
+}
+
+.canvas-controls {
+  margin-top: 0;
+  display: flex;
+  gap: 10px;
 }
 
 .control-btn {
@@ -71,21 +85,81 @@ h1 {
   margin-top: 10px;
   background-color: #CCC;
   width: 100%;
-  min-height: calc(100vh - 160px);
+  height: calc(100vh - 100px);
 }
 
-@media (min-width: 997px) {
+.model-setting-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+
+  .top-bar-separator {
+    width: 100%;
+  }
 
   .main-view {
-    min-height: calc(100vh - 160px);
+    height: calc(100vh - 100px);
   }
 
 }
 
-@media (max-width: 996px) {
+@media (max-width: 997px) {
 
   .content-left {
     margin-right: 0;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  body {
+    padding-top: 0;
+  }
+
+  .top-bar {
+    gap: 0;
+    flex-wrap: nowrap;
+  }
+
+  .title {
+    padding: 10px;
+  }
+
+  .title h1 {
+    font-size: 5vmin;
+  }
+
+  .main-view {
+    height: calc(100vh - 100px);
+  }
+
+
+  .canvas-controls {
+    margin-top: 0;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .title {
+    width: 100%;
+    text-align: center;
+  }
+
+  .title h1 {
+    font-size: 24px;
+  }
+
+  .top-bar {
+    flex-wrap: wrap;
+  }
+
+  .main-view {
+    height: calc(100vh - 150px);
   }
 
 }

@@ -2,22 +2,31 @@
 
   <div class="content-left">
 
-    <div class="canvas-controls">
-      <p-button styleClass="control-btn" *ngIf="uiHelperService.mobileView" (click)="settingSidebarVisible = !settingSidebarVisible"><i class="pi pi-list"></i></p-button>
-      <p-button styleClass="control-btn"><img alt="3D nézet" ngSrc="assets/icons/icons8-orthogonal-view.svg" height="48" width="48"></p-button>
-      <p-button styleClass="control-btn"><img alt="Előnézet" ngSrc="assets/icons/icons8-front-view.svg" height="48" width="48"></p-button>
-      <p-button styleClass="control-btn"><img alt="Felülnézet" ngSrc="assets/icons/icons8-top-view.svg" height="48" width="48"></p-button>
-      <p-button styleClass="control-btn"><img alt="Odalnézet balról" ngSrc="assets/icons/icons8-left-view.svg" height="48" width="48"></p-button>
-      <p-button styleClass="control-btn"><img alt="Oldalnézet jobbról" ngSrc="assets/icons/icons8-right-view.svg" height="48" width="48"></p-button>
+    <div class="top-bar">
+      <div class="title">
+        <h1>Angular - three.js example</h1>
+      </div>
+
+      <div class="top-bar-separator"></div>
+
+      <div class="canvas-controls">
+        <p-button styleClass="control-btn" *ngIf="uiHelperService.mobileView || uiHelperService.tabletView" (click)="settingSidebarVisible = !settingSidebarVisible"><i
+          class="pi pi-list"></i></p-button>
+        <p-button styleClass="control-btn"><img alt="3D nézet" ngSrc="assets/icons/icons8-orthogonal-view.svg" height="48" width="48"></p-button>
+        <p-button styleClass="control-btn"><img alt="Előlnézet" ngSrc="assets/icons/icons8-front-view.svg" height="48" width="48"></p-button>
+        <p-button styleClass="control-btn"><img alt="Felülnézet" ngSrc="assets/icons/icons8-top-view.svg" height="48" width="48"></p-button>
+        <p-button styleClass="control-btn"><img alt="Odalnézet balról" ngSrc="assets/icons/icons8-left-view.svg" height="48" width="48"></p-button>
+        <p-button styleClass="control-btn"><img alt="Oldalnézet jobbról" ngSrc="assets/icons/icons8-right-view.svg" height="48" width="48"></p-button>
+      </div>
     </div>
 
-    <canvas class="main-view">
+    <canvas class="main-view" #canvas>
 
     </canvas>
 
   </div>
 
-  <div class="content-right" *ngIf="!uiHelperService.mobileView">
+  <div class="content-right" *ngIf="!uiHelperService.mobileView && !uiHelperService.tabletView">
 
     <app-model-setting></app-model-setting>
 
@@ -25,8 +34,10 @@
 
 </div>
 
-  <p-sidebar *ngIf="uiHelperService.mobileView" [(visible)]="settingSidebarVisible" [position]="'right'">
+<p-sidebar #modelSettingBar *ngIf="uiHelperService.mobileView || uiHelperService.tabletView" [(visible)]="settingSidebarVisible" [position]="'right'" [showCloseIcon]="false">
 
-    <app-model-setting></app-model-setting>
+  <app-model-setting>
+    <p-button icon="pi pi-times" (click)="settingSidebarVisible = false"></p-button>
+  </app-model-setting>
 
-  </p-sidebar>
+</p-sidebar>
