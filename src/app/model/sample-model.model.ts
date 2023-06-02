@@ -1,4 +1,4 @@
-import {MeshStandardMaterial} from "three";
+import {BoxHelper, Group, MeshStandardMaterial} from "three";
 
 export class SampleModel {
 
@@ -9,8 +9,20 @@ export class SampleModel {
   transparency: number;
   color: string;
   material: MeshStandardMaterial;
+  group: Group;
+  selectionBox: BoxHelper;
 
-  constructor(index: number, name: string, visible: boolean, gltf: any, transparency: number, color: string, material: MeshStandardMaterial) {
+  constructor(
+    index: number,
+    name: string,
+    visible: boolean,
+    gltf: any,
+    transparency: number,
+    color: string,
+    material: MeshStandardMaterial,
+    group: Group,
+    selectionBox: BoxHelper
+  ) {
     this.index = index;
     this.name = name;
     this.visible = visible;
@@ -18,5 +30,7 @@ export class SampleModel {
     this.transparency = transparency;
     this.color = color;
     this.material = material;
+    this.group = group;
+    this.selectionBox = selectionBox;
   }
 }

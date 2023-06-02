@@ -1,10 +1,10 @@
-<p-table styleClass="p-table-small-caption" [value]="modelList" [(selection)]="selectedModel" selectionMode="single" dataKey="index" (selectionChange)="showSelectionBoundingBox()">
+<p-table styleClass="p-table-small-caption" [value]="modelList" [(selection)]="selectedModel" selectionMode="single" dataKey="index" (selectionChange)="selectionChanged()">
 
   <ng-template pTemplate="caption">
     <div class="flex align-items-center justify-content-between">
       Modellek
       <div class="model-setting-buttons">
-        <p-button icon="pi pi-refresh" (click)="clearSelection(); reloadClickedEvent.emit()"></p-button>
+        <p-button icon="pi pi-refresh" (click)="clearSelection(); reloadClickedEvent.emit()" [disabled]="!modelsLoaded"></p-button>
         <ng-content></ng-content>
       </div>
     </div>

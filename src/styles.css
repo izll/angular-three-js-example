@@ -83,7 +83,7 @@ h1 {
 
 .main-view {
   margin-top: 10px;
-  background-color: #CCC;
+  background-color: #555;
   width: 100%;
   height: calc(100vh - 100px);
 }
@@ -94,10 +94,6 @@ h1 {
 }
 
 @media (min-width: 768px) {
-
-  .top-bar-separator {
-    width: 100%;
-  }
 
   .main-view {
     height: calc(100vh - 100px);
@@ -115,35 +111,13 @@ h1 {
 
 @media (max-width: 767px) {
 
-  body {
-    padding-top: 0;
-  }
-
-  .top-bar {
-    gap: 0;
-    flex-wrap: nowrap;
-  }
-
-  .title {
-    padding: 10px;
-  }
-
   .title h1 {
-    font-size: 5vmin;
-  }
-
-  .main-view {
-    height: calc(100vh - 100px);
-  }
-
-
-  .canvas-controls {
-    margin-top: 0;
+    font-size: 20px;
   }
 
 }
 
-@media (max-width: 480px) {
+@media (max-width: 666px) {
 
   .title {
     width: 100%;
@@ -156,10 +130,11 @@ h1 {
 
   .top-bar {
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .main-view {
-    height: calc(100vh - 150px);
+    height: calc(100vh - 155px);
   }
 
 }

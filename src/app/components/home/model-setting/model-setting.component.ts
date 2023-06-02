@@ -12,11 +12,10 @@ export class ModelSettingComponent {
 
   @Output() reloadClickedEvent: EventEmitter<void> = new EventEmitter<void>();
   @Input() modelList!: Array<any>;
-  @Input() scene?: THREE.Scene;
+  @Input() modelsLoaded: boolean = false;
 
   selectedModel?: SampleModel;
-
-  selectionBox: any;
+  selectedModelHelper?: SampleModel;
 
   constructor(public uiHelperService: UiHelperService) {
   }
@@ -35,23 +34,29 @@ export class ModelSettingComponent {
 
   setSelectedModel(selectedModel: SampleModel) {
     this.selectedModel = selectedModel;
-    this.showSelectionBoundingBox();
+    this.updateSelectionInView();
+    this.selectedModelHelper = this.selectedModel;
   }
 
   clearSelection() {
-    if (typeof this.selectionBox !== 'undefined') {
-      this.scene!.remove(this.selectionBox);
+    if (this.selectedModel != null) {
+      this.selectedModel!.selectionBox.visible = false;
+      this.selectedModel = undefined;
     }
-    this.selectedModel = undefined;
   }
 
-  showSelectionBoundingBox() {
-    if (typeof this.selectionBox !== 'undefined') {
-      this.scene!.remove(this.selectionBox);
+  selectionChanged() {
+    this.updateSelectionInView();
+    this.selectedModelHelper = this.selectedModel;
+  }
+
+  updateSelectionInView() {
+    if (this.selectedModelHelper != null) {
+      this.selectedModelHelper.selectionBox.visible = false;
     }
-    let box = new THREE.BoxHelper( this.selectedModel?.gltf.scene, 0xffff00 );
-    this.selectionBox = box;
-    this.scene!.add(box);
+    if (this.selectedModel != null) {
+      this.selectedModel!.selectionBox.visible = true;
+    }
   }
 
 }
